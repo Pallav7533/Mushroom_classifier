@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mushroom Edibility Predictor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Add Mushroom Image -->
+        <img src="{{ url_for('static', filename='mushroom.jpg') }}" alt="Mushroom Image" class="mushroom-image">
+
+        
+        <h1>Mushroom Classifier</h1>
+        <form action="{{ url_for('predict') }}" method="POST">
+            <label for="cap_shape">Cap Shape (0-5):</label>
+            <input type="text" id="cap_shape" name="cap_shape" required><br>
+
+            <label for="cap_surface">Cap Surface (0-3):</label>
+            <input type="text" id="cap_surface" name="cap_surface" required><br>
+
+            <label for="cap_color">Cap Color (0-9):</label>
+            <input type="text" id="cap_color" name="cap_color" required><br>
+
+            <label for="bruises">Bruises (0 or 1):</label>
+            <input type="text" id="bruises" name="bruises" required><br>
+
+            <label for="odor">Odor (0-8):</label>
+            <input type="text" id="odor" name="odor" required><br>
+
+            <label for="gill_attachment">Gill Attachment (0 or 1):</label>
+            <input type="text" id="gill_attachment" name="gill_attachment" required><br>
+
+            <label for="gill_spacing">Gill Spacing (0 or 1):</label>
+            <input type="text" id="gill_spacing" name="gill_spacing" required><br>
+
+            <label for="gill_size">Gill Size (0 or 1):</label>
+            <input type="text" id="gill_size" name="gill_size" required><br>
+
+            <label for="gill_color">Gill Color (0-11):</label>
+            <input type="text" id="gill_color" name="gill_color" required><br>
+
+            <label for="stalk_shape">Stalk Shape (0 or 1):</label>
+            <input type="text" id="stalk_shape" name="stalk_shape" required><br>
+
+            <label for="stalk_root">Stalk Root (0-4):</label>
+            <input type="text" id="stalk_root" name="stalk_root" required><br>
+
+            <label for="stalk_surface_above_ring">Stalk Surface Above Ring (0-3):</label>
+            <input type="text" id="stalk_surface_above_ring" name="stalk_surface_above_ring" required><br>
+
+            <label for="stalk_surface_below_ring">Stalk Surface Below Ring (0-3):</label>
+            <input type="text" id="stalk_surface_below_ring" name="stalk_surface_below_ring" required><br>
+
+            <label for="stalk_color_above_ring">Stalk Color Above Ring (0-8):</label>
+            <input type="text" id="stalk_color_above_ring" name="stalk_color_above_ring" required><br>
+
+            <label for="stalk_color_below_ring">Stalk Color Below Ring (0-8):</label>
+            <input type="text" id="stalk_color_below_ring" name="stalk_color_below_ring" required><br>
+
+            <label for="veil_type">Veil Type (0):</label>
+            <input type="text" id="veil_type" name="veil_type" required><br>
+
+            <label for="veil_color">Veil Color (0-3):</label>
+            <input type="text" id="veil_color" name="veil_color" required><br>
+
+            <label for="ring_number">Ring Number (0-2):</label>
+            <input type="text" id="ring_number" name="ring_number" required><br>
+
+            <label for="ring_type">Ring Type (0-4):</label>
+            <input type="text" id="ring_type" name="ring_type" required><br>
+
+            <label for="spore_print_color">Spore Print Color (0-8):</label>
+            <input type="text" id="spore_print_color" name="spore_print_color" required><br>
+
+            <label for="population">Population (0-5):</label>
+            <input type="text" id="population" name="population" required><br>
+
+            <label for="habitat">Habitat (0-6):</label>
+            <input type="text" id="habitat" name="habitat" required><br>
+
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
